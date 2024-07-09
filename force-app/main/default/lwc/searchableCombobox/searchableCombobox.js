@@ -2,14 +2,14 @@ import { LightningElement } from "lwc";
 import getAccounts from "@salesforce/apex/SearchableComboboxController.getAccounts";
 
 export default class SearchableCombobox extends LightningElement {
+    isListening = false;
+
     pickListOrdered;
     searchResults;
     selectedSearchResult;
 
     get selectedValue() {
-        return this.selectedSearchResult
-            ? this.selectedSearchResult.label
-            : null;
+        return this.selectedSearchResult?.label ?? null;
     }
 
     connectedCallback() {
@@ -20,7 +20,6 @@ export default class SearchableCombobox extends LightningElement {
         });
     }
 
-    isListening = false;
     renderedCallback() {
         if (this.isListening) return;
 
