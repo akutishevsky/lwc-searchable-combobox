@@ -29,9 +29,17 @@ export default class SearchableCombobox extends LightningElement {
         this.isListening = true;
     }
 
+    /**
+     * This function compares the name of the component (`cmpName`) with the name of the clicked element (`clickedElementSrcName`).
+     * If the clicked element is outside the component, the dropdown (search results) is hidden by calling `clearSearchResults()`.
+     *
+     * - `cmpName` is the tag name of the host element of this component (e.g., 'C-SEARCHABLE-COMBOBOX').
+     * - `clickedElementSrcName` is the tag name of the element that was clicked on the page.
+     * - `isClickedOutside` is a boolean that is true if the clicked element is outside the component.
+     */
     hideDropdown(event) {
-        const cmpName = this.template.host.tagName; // C-SEARCHABLE-COMBOBOX
-        const clickedElementSrcName = event.target.tagName; // whatever was clicked on the page
+        const cmpName = this.template.host.tagName;
+        const clickedElementSrcName = event.target.tagName;
         const isClickedOutside = cmpName !== clickedElementSrcName;
         if (this.searchResults && isClickedOutside) {
             this.clearSearchResults();
