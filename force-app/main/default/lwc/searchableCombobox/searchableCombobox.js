@@ -31,7 +31,7 @@ export default class SearchableCombobox extends LightningElement {
 
     hideDropdown(event) {
         const cmpName = this.template.host.tagName; // C-SEARCHABLE-COMBOBOX
-        const clickedElementSrcName = event.srcElement.tagName; // whatever was clicked on the page
+        const clickedElementSrcName = event.target.tagName; // whatever was clicked on the page
         const isClickedOutside = cmpName !== clickedElementSrcName;
         if (this.searchResults && isClickedOutside) {
             this.clearSearchResults();
